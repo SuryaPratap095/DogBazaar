@@ -1,6 +1,8 @@
 package com.example.suryasolanki.dogbazaar;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,12 +19,20 @@ import android.widget.Toast;
 public class GridAdapter extends BaseAdapter{
         private Context mContext;
         private final String[] breeds;
-        private final int[] ImageId;
+       // private final int[] ImageId;
+       private    int[] ImageId={
+            R.mipmap.dog,
+            R.mipmap.cat,
+            R.mipmap.bird,
+            R.mipmap.animalacc,
+            R.mipmap.galleries,
+            R.mipmap.contact
+    };
 
-    public GridAdapter(Context c, String[] breeds,int[] ImageId){
+    public GridAdapter(Context c, String[] breeds){
         mContext=c;
         this.breeds=breeds;
-        this.ImageId=ImageId;
+
     }
 
 
@@ -40,7 +50,7 @@ public class GridAdapter extends BaseAdapter{
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
     @Override
@@ -54,8 +64,18 @@ public class GridAdapter extends BaseAdapter{
             TextView textName=(TextView)grid.findViewById(R.id.grid_text);
             LinearLayout linearGrid=(LinearLayout)grid.findViewById(R.id.gridLinear_image);
             ImageView imgGrid=(ImageView)grid.findViewById(R.id.grid_image);
+
+         //   Bitmap icon = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.animalacc);
+            Bitmap bm[]=new Bitmap[breeds.length];
+            bm[0]=BitmapFactory.decodeResource(mContext.getResources(), ImageId[0]);
             textName.setText(breeds[position]);
-            imgGrid.setImageResource(ImageId[position]);
+            imgGrid.setImageBitmap(null);
+
+            imgGrid.setImageBitmap(bm[0]);
+         //   imgGrid.setBackground(mContext.getResources().getDrawable(ImageId[position]));
+
+
+
             linearGrid.setOnClickListener(new View.OnClickListener() {
 
                 @Override
@@ -67,7 +87,7 @@ public class GridAdapter extends BaseAdapter{
         else{
             grid=(View)convertView;
         }
-
+        notifyDataSetChanged();
         return grid;
     }
 }

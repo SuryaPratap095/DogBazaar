@@ -4,20 +4,29 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
     android:gravity="center"
-    android:padding="5dp">
+    android:padding="5dp"
+
+    >
 
     <LinearLayout android:id="@+id/gridLinear_image"
-
         android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="5dp">
-    <ImageView
+
+    <!--<ImageView
         android:id="@+id/grid_image"
         android:layout_gravity="center_horizontal"
-        android:layout_width="75dp"
-        android:layout_height="75dp"/>
+        android:layout_width="wrap_content"
+        android:src="@drawable/dog"
+        android:layout_height="wrap_content"/>-->
 
+        <com.example.suryasolanki.dogbazaar.RoundedImageView
+            android:id="@+id/grid_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="15dp"
+             />
     <TextView
         android:id="@+id/grid_text"
         android:layout_height="wrap_content"
